@@ -14,19 +14,19 @@ past_frames = 4
 future_frames = 12
 
 # # Function to parse a single TFRecord file
-# def parse_tfrecord(record):
-#     scenario = scenario_pb2.Scenario()
-#     scenario.ParseFromString(record.numpy())  # Deserialize the TFRecord string to a Scenario object
-#     return scenario.SerializeToString()  # Serialize the Scenario object to a string
+def parse_tfrecord(record):
+    scenario = scenario_pb2.Scenario()
+    scenario.ParseFromString(record.numpy())  # Deserialize the TFRecord string to a Scenario object
+    return scenario.SerializeToString()  # Serialize the Scenario object to a string
 
 # # Wrapper function for tf.py_function
-# def parse_tfrecord_wrapper(record):
-#     serialized_scenario = tf.py_function(
-#         func=parse_tfrecord,
-#         inp=[record],
-#         Tout=tf.string  # Output is a serialized string
-#     )
-#     return serialized_scenario
+def parse_tfrecord_wrapper(record):
+    serialized_scenario = tf.py_function(
+        func=parse_tfrecord,
+        inp=[record],
+        Tout=tf.string  # Output is a serialized string
+    )
+    return serialized_scenario
 
 def decode_tracks_from_proto(tracks, tracks_to_predict):
     tracks_to_predict_ids = [x.track_index for x in tracks_to_predict]
