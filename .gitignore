@@ -1,0 +1,4 @@
+**/__pycache__/
+
+waymo/datasets
+waymo/processed
