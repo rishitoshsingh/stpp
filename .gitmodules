@@ -1,6 +1,6 @@
 [submodule "AgentFormer"]
 	path = AgentFormer
-	url = https://github.com/rishitoshsingh/AgentFormer.git
+	url = git@github.com:rishitoshsingh/AgentFormer.git
 [submodule "Trajectron-plus-plus"]
 	path = Trajectron-plus-plus
-	url = https://github.com/rishitoshsingh/Trajectron-plus-plus.git
+	url = git@github.com:rishitoshsingh/Trajectron-plus-plus.git
