@@ -3,7 +3,7 @@
 #SBATCH --job-name=waymo_process
 #SBATCH -N 1            # number of nodes
 #SBATCH -c 8            # number of cores 
-#SBATCH -t 1-00:00:00   # time in d-hh:mm:ss
+#SBATCH -t 0-12:00:00   # time in d-hh:mm:ss
 #SBATCH -p general    # partition 
 #SBATCH -q public       # QOS
 #SBATCH --mem=8G

@@ -22,8 +22,10 @@ def decode_tracks_from_proto(tracks, tracks_to_predict):
         cur_traj = [np.array([
             -1.0, -1.0, -1.0, -1.0,
             x.velocity_x, x.velocity_y,
-            x.width, x.length, x.height,
-            x.center_x, x.center_y, x.center_z,
+            # x.width, x.length, x.height,
+            x.width, x.height, x.length,  # from process_nuscenes.py line 127
+            # x.center_x, x.center_y, x.center_z,
+            x.center_x, x.center_z, x.center_y, # from process_nuscenes.py line 130
             x.heading, 1.0 if cur_data.id in tracks_to_predict_ids else 0.0
         ], dtype=np.float32) for x in cur_data.states if x.valid]
         try:
@@ -192,7 +194,7 @@ def plot_map_features(map_infos, save_path="map.png", meta_path="meta.txt"):
 
     # Calculate bounds with margin
     margin = 0
-    scale = 4
+    scale = 3
     x = all_polylines[:, 0]
     y = all_polylines[:, 1]
     x_min, x_max = np.round(x.min() - margin), np.round(x.max() + margin)
