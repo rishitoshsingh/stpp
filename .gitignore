@@ -2,7 +2,10 @@
 
 waymo/datasets
 waymo/processed
+waymo/sampled_processed
 waymo/temp_maps
 waymo/temp_traj
+
+results/*
 
 **/slurm*
