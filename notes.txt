@@ -1,0 +1,8 @@
+nuscenes:
+    train: 32186
+    val: 8560
+    test: 9041
+nuscenes_waymo_merged:
+    train: 69492
+    val: 13882
+    test: 9666

@@ -248,7 +248,7 @@ def process_single_tfrecord(file_path, split, DATAOUT, map_version):
 
             np.savetxt(f'{DATAOUT}/map_{map_version}/meta_scene-{scenario_id}.txt', meta, fmt='%.2f')
             cv2.imwrite(f'{DATAOUT}/map_{map_version}/scene-{scenario_id}.png', dark_canvas)
-            cv2.imwrite(f'{DATAOUT}/map_{map_version}/vis_scene{scenario_id}.png', vis_canvas)
+            cv2.imwrite(f'{DATAOUT}/map_{map_version}/vis_scene-{scenario_id}.png', vis_canvas)
 
             np.savetxt(label_path, track_infos, fmt='%s')
     except Exception as e:

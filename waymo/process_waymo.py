@@ -283,7 +283,7 @@ if __name__ == "__main__":
 
             np.savetxt(f'{DATAOUT}/map_{map_version}/meta_scene-{scenario.scenario_id}.txt', meta, fmt='%.2f')
             cv2.imwrite(f'{DATAOUT}/map_{map_version}/scene-{scenario.scenario_id}.png', dark_canvas)
-            cv2.imwrite(f'{DATAOUT}/map_{map_version}/vis_scene{scenario.scenario_id}.png', vis_canvas)
+            cv2.imwrite(f'{DATAOUT}/map_{map_version}/vis_scene-{scenario.scenario_id}.png', vis_canvas)
 
             pred_num = int(track_infos[:, -1].astype(np.float32).sum())
             total_pred += pred_num
