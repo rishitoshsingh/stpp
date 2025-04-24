@@ -32,7 +32,7 @@ def calculate_sums(data_dir):
 if __name__ == "__main__":
     # DATA_DIR = "/path/to/your/dataset"  # Replace with the actual dataset path
     DATA_DIR = "sampled_processed/"  # Replace with the actual dataset path
-    DATA_DIR = "/scratch/rksing18/stpp/AgentFormer/datasets/merged_nuscenes_waymo/"  # Replace with the actual dataset path
+    # DATA_DIR = "/scratch/rksing18/stpp/AgentFormer/datasets/merged_nuscenes_waymo/"  # Replace with the actual dataset path
 
     sums = calculate_sums(DATA_DIR)
     for subdir, total_sum in sums.items():

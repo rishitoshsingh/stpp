@@ -5,7 +5,7 @@ import shutil
 from tqdm import tqdm
 
 # Define source and destination paths
-SOURCE_DIR = "/scratch/rksing18/stpp/waymo/processed"
+SOURCE_DIR = "/scratch/rksing18/stpp/waymo/processed_fix"
 DEST_DIR = "/scratch/rksing18/stpp/waymo/sampled_processed"
 
 # Delete DEST_DIR if it exists
@@ -40,7 +40,7 @@ for subfolder in subfolders:
         map_files = [
             f"meta_scene-{scene_id}.txt",
             f"scene-{scene_id}.png",
-            f"vis_scene{scene_id}.png",
+            f"vis_scene-{scene_id}.png",
         ]
         for map_file in map_files:
             src_map_file = os.path.join(SOURCE_DIR, "map_0.1", map_file)

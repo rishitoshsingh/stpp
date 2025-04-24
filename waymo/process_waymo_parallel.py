@@ -20,7 +20,7 @@ def decode_tracks_from_proto(tracks, tracks_to_predict):
     data = None
     for cur_data in tracks:
         cur_traj = [np.array([
-            -1.0, -1.0, -1.0, -1.0,
+            -1.0, -1.0, -1.0, -1.0, -1.0,
             x.velocity_x, x.velocity_y,
             # x.width, x.length, x.height,
             x.width, x.height, x.length,  # from process_nuscenes.py line 127
@@ -158,7 +158,7 @@ def decode_map_features_from_proto(map_features):
 def plot_map_features(map_infos, save_path="map.png", meta_path="meta.txt"):
     color_map = {
         'lane': [219, 225, 200],
-        'road_line': [40, 40, 40],
+        # 'road_line': [40, 40, 40],
         'road_edge': [0, 0, 0],
         'stop_sign': [0, 0, 255],
         'crosswalk': [116, 116, 116],
@@ -179,7 +179,7 @@ def plot_map_features(map_infos, save_path="map.png", meta_path="meta.txt"):
     }
 
     thickness_map = {
-        'lane': 12,
+        'lane': 13,
         'road_line': 3,
         'road_edge': 2,
         'stop_sign': 4,
@@ -193,8 +193,8 @@ def plot_map_features(map_infos, save_path="map.png", meta_path="meta.txt"):
         return
 
     # Calculate bounds with margin
-    margin = 0
-    scale = 3
+    margin = 75
+    scale = 2
     x = all_polylines[:, 0]
     y = all_polylines[:, 1]
     x_min, x_max = np.round(x.min() - margin), np.round(x.max() + margin)
@@ -239,8 +239,8 @@ def process_single_tfrecord(file_path, split, DATAOUT, map_version):
 
             # Skip if already processed
             label_path = f'{DATAOUT}/label/{split}/scene-{scenario_id}.txt'
-            if os.path.exists(label_path):
-                continue
+            # if os.path.exists(label_path):
+            #     continue
 
             track_infos = decode_tracks_from_proto(scenario.tracks, scenario.tracks_to_predict)
             map_infos = decode_map_features_from_proto(scenario.map_features)
@@ -268,6 +268,8 @@ def main(data_root, data_out, map_version="0.1", num_workers=os.cpu_count()):
         elif split == 'test':
             src_files = glob.glob(f"{data_root}/testing/*.tfrecord*")
         src_files.sort()
+        # if len(src_files) > 200:
+        src_files = src_files[:50]
 
         print(f"Processing split '{split}' with {len(src_files)} files using {num_workers} workers.")
 

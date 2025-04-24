@@ -15,7 +15,7 @@ def decode_tracks_from_proto(tracks, tracks_to_predict, frame_rate=10):
     data = None
     for cur_data in tracks:
         cur_traj = [np.array([
-            -1.0, -1.0, -1.0, -1.0,
+            -1.0, -1.0, -1.0, -1.0, -1.0,
             x.velocity_x, x.velocity_y,
             # x.width, x.length, x.height,
             x.width, x.height, x.length,  # from process_nuscenes.py line 127

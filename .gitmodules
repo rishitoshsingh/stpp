@@ -4,3 +4,6 @@
 [submodule "Trajectron-plus-plus"]
 	path = Trajectron-plus-plus
 	url = git@github.com:rishitoshsingh/Trajectron-plus-plus.git
+[submodule "stanford/StanfordDroneDataset"]
+	path = stanford/StanfordDroneDataset
+	url = https://github.com/flclain/StanfordDroneDataset.git
