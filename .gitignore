@@ -3,6 +3,7 @@
 waymo/datasets
 waymo/processed
 waymo/sampled_processed
+waymo/sampled_datasets
 waymo/processed_fix
 waymo/temp_maps
 waymo/temp_traj
