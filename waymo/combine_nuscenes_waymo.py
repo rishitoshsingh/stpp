@@ -34,8 +34,8 @@ def combine_datasets(nuscenes_data, waymo_data, merged_data_path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Combine NuScenes and Waymo datasets into a single directory.")
     parser.add_argument("--nuscenes_data", help="Path to the NuScenes processed data", default="/scratch/rksing18/stpp/AgentFormer/datasets/nuscenes_pred")
-    parser.add_argument("--waymo_data", help="Path to the Waymo processed data", default="/scratch/rksing18/stpp/waymo/sampled_processed")
-    parser.add_argument("--merged_data_path", help="Path to the new merged dataset directory", default="/scratch/rksing18/stpp/AgentFormer/datasets/merged_nuscenes_waymo")
+    parser.add_argument("--waymo_data", help="Path to the Waymo processed data", default="/scratch/rksing18/stpp/waymo/sampled_datasets/waymo_pred_downsampled/frame_rate_2")
+    parser.add_argument("--merged_data_path", help="Path to the new merged dataset directory", default="/scratch/rksing18/stpp/AgentFormer/datasets/merged_nuscenes_waymo2")
     
     args = parser.parse_args()
     

@@ -5,8 +5,8 @@ import shutil
 from tqdm import tqdm
 
 # Define source and destination paths
-SOURCE_DIR = "/scratch/rksing18/stpp/waymo/processed_fix"
-DEST_DIR = "/scratch/rksing18/stpp/waymo/sampled_processed"
+SOURCE_DIR = "/scratch/rksing18/stpp/waymo/datasets/waymo_pred_downsampled/frame_rate_2"
+DEST_DIR = "/scratch/rksing18/stpp/waymo/sampled_datasets/waymo_pred_downsampled/frame_rate_2"
 
 # Delete DEST_DIR if it exists
 if os.path.exists(DEST_DIR):
@@ -17,7 +17,7 @@ os.makedirs(DEST_DIR)
 
 # Subfolders to process
 subfolders = ["train", "val", "test"]
-file_counts = {"train": 1000, "val": 150, "test": 150}
+file_counts = {"train": 500, "val": 150, "test": 150}
 
 # Process each subfolder
 for subfolder in subfolders:

@@ -16,4 +16,4 @@ module load mamba/latest
 source activate /scratch/rksing18/.conda/stpp_env_waymo
 
 cd /scratch/rksing18/stpp/waymo
-python process_waymo_parallel.py --data_root /scratch/rksing18/datasets/waymo/scenario --data_out /scratch/rksing18/stpp/waymo/processed_fix/ --num_workers 16
+python process_waymo_parallel.py --data_root /scratch/rksing18/datasets/waymo/scenario --data_out /scratch/rksing18/stpp/waymo/processed_fix_temp/ --num_workers 16

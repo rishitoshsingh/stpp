@@ -247,6 +247,7 @@ def process_single_tfrecord(file_path, split, DATAOUT, map_version):
             meta, vis_canvas, dark_canvas = plot_map_features(map_infos)
 
             np.savetxt(f'{DATAOUT}/map_{map_version}/meta_scene-{scenario_id}.txt', meta, fmt='%.2f')
+            print(dark_canvas.shape)
             cv2.imwrite(f'{DATAOUT}/map_{map_version}/scene-{scenario_id}.png', dark_canvas)
             cv2.imwrite(f'{DATAOUT}/map_{map_version}/vis_scene-{scenario_id}.png', vis_canvas)
 
