@@ -24,7 +24,7 @@ def read_stanford_data(data_path):
     data.drop(columns=["xmin", "ymin", "xmax", "ymax"], inplace=True)
 
     # dropping lost, occuluded or generated trajectories
-    idx = ((data["lost"] == 1 ) | ( data["occluded"] == 1 ) | (data["generated"] == 1 ))
+    idx = ((data["lost"] == 1 ) | ( data["occluded"] == 1 ))# | (data["generated"] == 1 ))
     data = data[~idx]
     data.drop(columns=["lost", "occluded", "generated"], inplace=True)
 
@@ -34,6 +34,12 @@ def read_stanford_data(data_path):
     cols = ["frame", "track", "label", "x", "y"]
     data = data[cols]
     data.sort_values(by=["frame", "track"], inplace=True, kind="mergesort")
+
+    # Normalize columns x and y
+    new_min = 1
+    new_max = 20
+    data['x'] = (data['x'] - data['x'].min()) / (data['x'].max() - data['x'].min()) * (new_max - new_min) + new_min
+    data['y'] = (data['y'] - data['y'].min()) / (data['y'].max() - data['y'].min()) * (new_max - new_min) + new_min
 
     # insert don't care columns 
     target_cols = ["frame", "track", "label", "dont_care1", "dont_care2", "dont_care3", "dont_care4", "dont_care5", "dont_care6", "dont_care7", "dont_care8", "dont_care9", "dont_care10", "x", "dont_care11", "y", "dont_care12"]
@@ -63,6 +69,13 @@ def process_stanford_dataset(data_root, eth_ecy_dir):
         shutil.rmtree(eth_ecy_stanford_dir)
     print("copying original dataset to {}".format(eth_ecy_stanford_dir))
     shutil.copytree(eth_ecy_dir, eth_ecy_stanford_dir)
+
+    # Rename all subdirectories in eth_ecy_stanford_dir by appending '_stanford' to their names
+    for subdir in os.listdir(eth_ecy_stanford_dir):
+        subdir_path = os.path.join(eth_ecy_stanford_dir, subdir)
+        if os.path.isdir(subdir_path):
+            new_subdir_path = os.path.join(eth_ecy_stanford_dir, subdir + '_stanford')
+            os.rename(subdir_path, new_subdir_path)
     print("copying done")
 
     # Find all directories in eth_ucy_stanford directory
